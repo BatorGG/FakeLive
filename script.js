@@ -2,15 +2,19 @@ var btn = document.getElementById("controls");
 
 var video = document.getElementById("videoElement");
 
-var camera = "user";
+var camera = "front";
+
+var devices = navigator.mediaDevices.enumerateDevices();
 
 btn.addEventListener("click", () => {
 
-    if (camera == "user"){
-        camera = "environment";
+    console.log(devices);
+
+    if (camera == "front"){
+        camera = "back";
     }
     else {
-        camera = "user";
+        camera = "front";
     }
 
     if (navigator.mediaDevices.getUserMedia) {
