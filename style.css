@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.topblack {
+    background-color: black;
+    height: 7vh;
+    width: 100vw;
+}
+
+.container {
+	margin: 0px auto;
+	width: 100vw;
+	height: 93vh;
+
+    position: relative;
+}
+
+#videoElement {
+	width: 100%;
+	height: calc(100% - 7vh);
+	background-color: #666;
+    object-fit: cover;
+
+    z-index: 1;
+}
+
+.toprow {
+    top: 0px;
+    left: 0px;
+
+    width: calc(100% - 7vh);
+    height: 7vh;
+
+    position: absolute;
+}
+
+.profilepic {
+    height: 5vh;
+    width: 5vh;
+    border-radius: 50%;
+
+    margin-left: 1vh;
+    margin-top: 1vh;
+    margin-right: 0px;
+
+    overflow: hidden;
+}
+
+.profilepic img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.usernames {
+    height: 7vh;
+    left: 7vh;
+    top: 0px;
+
+    position: absolute;
+
+    white-space: nowrap;
+
+}
+
+.username {
+
+    color: white;
+    font-size: 32pt;
+    font-weight: 400;
+    white-space: nowrap;
+
+    left: 0px;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    position: absolute;
+}
+
+.downarrow {
+
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-left: 10px;
+}
+
+.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 8px;
+}
+  
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.topright {
+    position: absolute;
+
+    right: 0px;
+    top: 0px;
+
+    height: 7vh;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.live {
+    height: 5vh;
+    width: 5vh;
+    margin: 1vh;
+    margin-right: 0.5vh;
+
+
+    background-color: red;
+    border-radius: 10px;
+    position: relative;
+}
+
+.live h1 {
+    color: white;
+
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    position: absolute;
+    
+
+}
+
+.viewercountbox {
+    height: 5vh;
+    margin: 1vh;
+    margin-left: 0.5vh;
+
+    border-radius: 10px;
+    background-color: #303030;
+    padding-right: 0.5vh;
+
+}
+
+.viewercountflex {
+    display: flex;
+    flex-direction: row;
+}
+
+.viewericon {
+    height: 5vh;
+    width: 3vh;
+    aspect-ratio: 1/1;
+    position: relative;
+}
+
+.viewericonimg{
+    height: 50%;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+
+    left: 0px;
+    top: 50%;
+    transform: translate(50%, -50%);
+
+    position: absolute;
+
+    object-fit: contain;
+}
+
+.viewercountcontainer {
+    padding: 0.5vh;
+    height: 5vh !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.viewercount {
+    color: white;
+    font-weight: 400;
+    font-size: 36px;
+}
+
+.controls {
+    top: 0px;
+    right: 0px;
+    width: 7vh;
+    height: 35vh;
+
+    position: absolute;
+
+}
+
+.controls img {
+    margin-top: 1vh;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.bottomrow {
+    bottom: 0px;
+
+    width: 100%;
+    height: 7vh;
+
+    position: absolute;
+
+}
+
+.bottomrow img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.comments {
+    position: absolute;
+    bottom: 7vh;
+    left: 0px;
+
+    width: 100vw;
+    height: 40vh;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    overflow: hidden;
+}
+
+.comment {
+    width: calc(100% - 2vh);
+    height: 7vh;
+    margin: 0.5vh;
+
+    display: flex;
+}
+
+.commentpic {
+
+    height: 5vh;
+    width: 6vh;
+    border-radius: 50%;
+
+    margin: 1vh;
+
+    overflow: hidden;
+}
+
+.commentpic img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.commentcontent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.commentname {
+    height: 50%;
+    width: 100%;
+
+    position: relative;
+}
+
+.commentname h1 {
+    color: white;
+    font-weight: 600;
+
+    left: 0px;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    position: absolute;
+}
+
+.commenttext {
+    height: 50%;
+    width: 100%;
+
+    position: relative;
+}
+
+.commenttext h1 {
+    color: white;
+    font-weight: 400;
+
+    left: 0px;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    position: absolute;
+}
+
+.mask {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 5%, black 100%);
+  }
