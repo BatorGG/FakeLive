@@ -10,8 +10,6 @@ function getDevices() {
 
 btn.addEventListener("click", () => {
 
-    console.log(hasFrontBack());
-
     if (camera == "environment"){
         camera = "user";
     }
