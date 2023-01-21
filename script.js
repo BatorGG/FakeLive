@@ -2,31 +2,36 @@ var btn = document.getElementById("controls");
 
 var video = document.getElementById("videoElement");
 
-var camera = "front";
+var camera = "environment";
 
-var devices = navigator.mediaDevices.enumerateDevices();
+function getDevices() {
+    return navigator.mediaDevices.enumerateDevices();
+}
 
 btn.addEventListener("click", () => {
 
-    console.log(devices);
+    console.log(hasFrontBack());
 
-    if (camera == "front"){
-        camera = "back";
+    if (camera == "environment"){
+        camera = "user";
     }
     else {
-        camera = "front";
+        camera = "environment";
     }
 
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ 
             video: {
                 facingMode: {
-                    exact: camera
+                    ideal: camera
                 }
             } 
         })
           .then(function (stream) {
             video.srcObject = stream;
+            /*getDevices().then(function (result) {
+                console.log(result);
+            });*/
           })
           .catch(function (error) {
             console.log("Something went wrong!\n" + error);
@@ -34,4 +39,3 @@ btn.addEventListener("click", () => {
       }
 
 });
-
