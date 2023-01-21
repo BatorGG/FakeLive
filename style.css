@@ -193,6 +193,8 @@
     width: 7vh;
     height: 35vh;
 
+    padding-right: 1vh;
+
     position: absolute;
 
 }
@@ -202,6 +204,24 @@
     width: 100%;
     height: auto;
     object-fit: contain;
+}
+
+#stop {
+    position: absolute;
+    right: 0px;
+    top: 1vh;
+
+    height: 7vh;
+    width: 7vh;
+}
+
+#switch {
+    position: absolute;
+    right: 0px;
+    top: 23vh;
+
+    height: 7vh;
+    width: 7vh;
 }
 
 .bottomrow {
@@ -305,4 +325,11 @@
 .mask {
     -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 100%);
     mask-image: linear-gradient(to bottom, transparent 5%, black 100%);
-  }
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.mirrored {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
