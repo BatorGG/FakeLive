@@ -81,6 +81,7 @@ function stop(e) {
     postComment();
 }
 
+var commentNames = ["botond.elek", "_dbogi", "triebnandor"];
 var commentTexts = ["Szia!", "Mizu?", "bro", "xddd"];
 var viewerCount = 12.2; // *1000
 
@@ -88,17 +89,36 @@ function postComment(){
     var comments = document.getElementsByClassName("comment");
 
 
+    //Save first comment
     var save = comments[0].innerHTML;
 
-    comments[0].children[1].children[1].children[0].textContent = commentTexts[Math.floor(Math.random() * commentTexts.length)];
+    //Change first comment
+    var commentText = commentTexts[Math.floor(Math.random() * commentTexts.length)];
+    comments[0].children[1].children[1].children[0].textContent = commentText;
+    
+    var commentName = commentNames[Math.floor(Math.random() * commentNames.length)];
+    comments[0].children[0].children[0].src = commentName + ".png";
+    comments[0].children[1].children[0].children[0].textContent = commentName;
 
+    //Slide everything back by one
     for (var i = 0; i < comments.length-1; i++) {
         let savee = comments[i+1].innerHTML;
         comments[i+1].innerHTML = save;
         save = savee;
     }
+
+
+
+
+
+
+
     setTimeout(postComment, 3000);
 
+
+
+
+    //Vierecount
     var change = (Math.floor(Math.random() * 11) - 5) / 10;
     viewerCount += Math.round(change*10)/10;
 
