@@ -27,6 +27,7 @@ if (navigator.mediaDevices.getUserMedia) {
       })
       .catch(function (error) {
         console.log("Something went wrong!\n" + error);
+        alert("Error");
       });
   }
 
@@ -81,6 +82,7 @@ function stop(e) {
 }
 
 var commentTexts = ["Szia!", "Mizu?", "bro", "xddd"];
+var viewerCount = 12.2; // *1000
 
 function postComment(){
     var comments = document.getElementsByClassName("comment");
@@ -96,6 +98,11 @@ function postComment(){
         save = savee;
     }
     setTimeout(postComment, 3000);
+
+    var change = (Math.floor(Math.random() * 11) - 5) / 10;
+    viewerCount += Math.round(change*10)/10;
+
+    document.getElementsByClassName("viewercount")[0].textContent = Math.round(viewerCount*10)/10 + "K";
 }
 
 setTimeout(postComment, 3000);
