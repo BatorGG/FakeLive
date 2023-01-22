@@ -9,36 +9,43 @@ function getDevices() {
     return navigator.mediaDevices.enumerateDevices();
 }
 
-if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ 
-        video: {
-            facingMode: {
-                ideal: camera
-            }
-        } 
-    })
-      .then(function (stream) {
-        video.srcObject = stream;
+function startStream() {
 
-        getDevices().then(function (result) {
-            console.log(result);
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ 
+            video: {
+                facingMode: {
+                    ideal: camera
+                }
+            } 
+        })
+        .then(function (stream) {
+            video.srcObject = stream;
+
+            getDevices().then(function (result) {
+                console.log(result);
+            });
+
+        })
+        .catch(function (error) {
+            console.log("Something went wrong!\n" + error);
+            alert("Error");
         });
+    }
 
-      })
-      .catch(function (error) {
-        console.log("Something went wrong!\n" + error);
-        alert("Error");
-      });
-  }
+}
+
+startStream();
 
 switchbtn.addEventListener("click", () => {
 
     //video.classList.toggle("mirrored");
-    alert("switch");
+    
 
     var constraints;
 
     if (camera == "environment"){
+        //alert("switch to user");
         camera = "user";
         constraints = { 
             video: {
@@ -49,6 +56,8 @@ switchbtn.addEventListener("click", () => {
         };
     }
     else {
+        //alert("switch to environment");
+        camera = "environment";
         constraints = { 
             video: {
                 facingMode: {
@@ -57,14 +66,26 @@ switchbtn.addEventListener("click", () => {
             } 
         };
     }
-
-    var stream = video.srcObject;
-    var tracks = stream.getTracks();
+    try {
+        var stream = video.srcObject;
+        var tracks = stream.getTracks();
+    }
+    catch {
+        startStream();
+    }
+    
 
     for (var i = 0; i < tracks.length; i++) {
         var track = tracks[i];
-        track.applyConstraints(constraints);
-        console.log("Camera switched!");
+        track.applyConstraints(constraints).then( (streamm) => {
+            video.srcObject = streamm;
+
+            console.log("Camera switched!");
+            alert("Switched to " + camera);
+        }).catch( (err) => {
+            console.log(err);
+        });
+        
     }
 
 });
