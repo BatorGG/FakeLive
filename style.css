@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: black;
+}
+
 .topblack {
     background-color: black;
     height: 7vh;
@@ -69,7 +73,7 @@
 .username {
 
     color: white;
-    font-size: 32pt;
+    font-size: 28pt;
     font-weight: 400;
     white-space: nowrap;
 
