@@ -32,11 +32,14 @@ startStream(startingConstraints);
 
 switchbtn.addEventListener("click", () => {
 
-    //video.classList.toggle("mirrored");
+    
     
 
     if (camera == "environment"){
         //alert("switch to user");
+
+        video.classList.add("mirrored");
+
         camera = "user";
         var constraints = { 
             video: {
@@ -52,6 +55,9 @@ switchbtn.addEventListener("click", () => {
 
     else {
         //alert("switch to environment");
+
+        video.classList.remove("mirrored");
+        
         camera = "environment";
         var constraints = { 
             video: {
@@ -85,8 +91,6 @@ function stop(e) {
         console.log("No video running.");
     }
     
-
-    postComment();
 }
 
 var commentNames = ["botond.elek", "_dbogi", "triebnandor"];
@@ -133,4 +137,4 @@ function postComment(){
     document.getElementsByClassName("viewercount")[0].textContent = Math.round(viewerCount*10)/10 + "K";
 }
 
-setTimeout(postComment, 3000);
+postComment();
