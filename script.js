@@ -33,12 +33,29 @@ if (navigator.mediaDevices.getUserMedia) {
 
 switchbtn.addEventListener("click", () => {
 
+    //video.classList.toggle("mirrored");
+    alert("switch");
+
+    var constraints;
+
     if (camera == "environment"){
         camera = "user";
-        video.classList.toggle("mirrored");
+        constraints = { 
+            video: {
+                facingMode: {
+                    exact: "user"
+                }
+            } 
+        };
     }
     else {
-        camera = "environment";
+        constraints = { 
+            video: {
+                facingMode: {
+                    ideal: "environment"
+                }
+            } 
+        };
     }
 
     var stream = video.srcObject;
@@ -46,13 +63,6 @@ switchbtn.addEventListener("click", () => {
 
     for (var i = 0; i < tracks.length; i++) {
         var track = tracks[i];
-        let constraints = { 
-            video: {
-                facingMode: {
-                    ideal: camera
-                }
-            } 
-        };
         track.applyConstraints(constraints);
         console.log("Camera switched!");
     }
