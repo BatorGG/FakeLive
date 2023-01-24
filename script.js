@@ -93,8 +93,8 @@ function stop(e) {
     
 }
 
-var commentNames = ["botond.elek", "_dbogi", "triebnandor"];
-var commentTexts = ["Szia!", "Mizu?", "bro", "xddd"];
+var commentNames = ["botond.elek", "_dbogi", "triebnandor", "forgo_berci", "batta_benedek", "k_b_u_b_u_", "lberhanna", "_ramcsi_", "lucascheffler"];
+var commentTexts = ["Szia", "Hali", "Mizu?", "Hogy vagy?", "Hol vagy?", "Meddig leszel liveban?", "Csa teso", "lol", "lolll", "teso", "bro", "broo", "xddd",  "Rég volt live", "Terv estére?", "cinge", "mizu bator", "Vegre livee", "lessgoo"];
 var viewerCount = 12.2; // *1000
 
 function postComment(){
@@ -109,7 +109,7 @@ function postComment(){
     comments[0].children[1].children[1].children[0].textContent = commentText;
     
     var commentName = commentNames[Math.floor(Math.random() * commentNames.length)];
-    comments[0].children[0].children[0].src = commentName + ".png";
+    comments[0].children[0].children[0].src = String(commentName) + ".png";
     comments[0].children[1].children[0].children[0].textContent = commentName;
 
     //Slide everything back by one
@@ -125,8 +125,7 @@ function postComment(){
 
 
 
-    setTimeout(postComment, 3000);
-
+    setTimeout(postComment, (Math.floor(Math.random() * 3000) + 3000));
 
 
 
