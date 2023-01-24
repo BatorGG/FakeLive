@@ -109,7 +109,13 @@ function postComment(){
     comments[0].children[1].children[1].children[0].textContent = commentText;
     
     var commentName = commentNames[Math.floor(Math.random() * commentNames.length)];
-    comments[0].children[0].children[0].src = String(commentName) + ".png";
+    var fileName = commentName;
+
+    while (fileName.charAt(0) == "_"){
+        fileName = fileName.substring(1);
+    }
+
+    comments[0].children[0].children[0].src = fileName + ".png";
     comments[0].children[1].children[0].children[0].textContent = commentName;
 
     //Slide everything back by one
