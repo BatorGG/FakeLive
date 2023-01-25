@@ -1,11 +1,17 @@
 var switchbtn = document.getElementById("switch");
 var stopbtn = document.getElementById("stop");
 
+var typeUsername = document.getElementById("typeUsername");
+var startBtn = document.getElementById("startButton");
+
 var video = document.getElementById("videoElement");
 
 var camera = "environment";
 
 function startStream(constraints) {
+
+    typeUsername.classList.add("hidden");
+    startBtn.classList.add("hidden");
 
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia(constraints)
@@ -20,7 +26,7 @@ function startStream(constraints) {
 
 }
 
-var startingConstraints = { 
+var constraints = { 
     video: {
         facingMode: {
             ideal: camera
@@ -28,7 +34,7 @@ var startingConstraints = {
     } 
 }
 
-startStream(startingConstraints);
+startStream(constraints);
 
 switchbtn.addEventListener("click", () => {
 
@@ -41,7 +47,7 @@ switchbtn.addEventListener("click", () => {
         video.classList.add("mirrored");
 
         camera = "user";
-        var constraints = { 
+        constraints = { 
             video: {
                 facingMode: {
                     exact: "user"
@@ -59,7 +65,7 @@ switchbtn.addEventListener("click", () => {
         video.classList.remove("mirrored");
         
         camera = "environment";
-        var constraints = { 
+        constraints = { 
             video: {
                 facingMode: {
                     ideal: "environment"
@@ -74,6 +80,9 @@ switchbtn.addEventListener("click", () => {
 });
 
 stopbtn.addEventListener("click", stop);
+startBtn.addEventListener("click", start);
+
+var useUsername = "batorkarpathegyi";
 
 function stop(e) {
     try {
@@ -90,11 +99,36 @@ function stop(e) {
     catch {
         console.log("No video running.");
     }
-    
+
+    typeUsername.classList.remove("hidden");
+    startBtn.classList.remove("hidden");
+
+}
+
+function start() {
+    typeUsername.classList.add("hidden");
+    startBtn.classList.add("hidden");
+
+    if (typeUsername.value.length > 3) {
+        useUsername = typeUsername.value;
+    }
+
+    document.getElementById("profilepicImg").src = useUsername + ".png";
+    document.getElementById("username").innerHTML = useUsername + "<div class='downarrow'> <i class='arrow down'></i></div>";
+
+    if (commentNames.includes(useUsername)) {
+        let index = commentNames.indexOf(useUsername);
+        if (index > -1) { // only splice array when item is found
+            commentNames.splice(index, 1); // 2nd parameter means remove one item only
+            console.log(commentNames);
+        }
+    }
+
+    startStream(constraints);
 }
 
 var commentNames = ["botond.elek", "_dbogi", "triebnandor", "forgo_berci", "batta_benedek", "k_b_u_b_u_", "lberhanna", "_ramcsi_", "lucascheffler"];
-var commentTexts = ["Szia", "Hali", "Mizu?", "Hogy vagy?", "Hol vagy?", "Meddig leszel liveban?", "Csa teso", "lol", "lolll", "teso", "bro", "broo", "xddd",  "Rég volt live", "Terv estére?", "cinge", "mizu bator", "Vegre livee", "lessgoo"];
+var commentTexts = ["Szia", "Hali", "Mizu?", "Hogy vagy?", "Hol vagy?", "Meddig leszel liveban?", "Csa teso", "lol", "lolll", "teso", "bro", "broo", "xddd",  "Rég volt live", "Terv estére?", "cinge", "mizu bator", "Vegre livee", "lessgoo", "az ugy jo"];
 var viewerCount = 12.2; // *1000
 
 function postComment(){

@@ -338,3 +338,37 @@ body {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
+
+.hidden {
+    display: none;
+}
+
+.typeUsername {
+    z-index: 999;
+
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+
+    width: 60vw;
+    height: 10vw;
+
+    font-size: 48px;
+
+}
+
+.startButton {
+    z-index: 999;
+
+    position: fixed;
+    left: 50%;
+    top: 47%;
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 10vw;
+
+    font-size: 48px;
+    font-weight: 600;
+}
