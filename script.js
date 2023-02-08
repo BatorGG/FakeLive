@@ -129,7 +129,7 @@ function start() {
 
 var commentNames = ["botond.elek", "_dbogi", "triebnandor", "forgo_berci", "batta_benedek", "k_b_u_b_u_", "lberhanna", "_ramcsi_", "lucascheffler"];
 var commentTexts = ["Szia", "Hali", "Mizu?", "Hogy vagy?", "Hol vagy?", "Meddig leszel liveban?", "Csa teso", "lol", "lolll", "teso", "bro", "broo", "xddd",  "Rég volt live", "Terv estére?", "cinge", "mizu bator", "Vegre livee", "lessgoo", "az ugy jo", "csao", "mehetnenk mar bulizni valamikor", "fasza a szett", "nem fázol?", "bazdmeeeg", "Nem fogod elhinni mi történt", "kurvajo xd"];
-var viewerCount = 12.2; // *1000
+var viewerCount = 3000;
 
 function postComment(){
     var comments = document.getElementsByClassName("comment");
@@ -170,16 +170,17 @@ function postComment(){
 
 
     //Vierecount
-    var change = (Math.floor(Math.random() * 10) - 4) / 10;
-    if (viewerCount > 2) {
-        viewerCount += Math.round(change*10)/10;
+    var change = (Math.floor(Math.random() * 100) - 40);
+    if (viewerCount > 1000) {
+        viewerCount += change;
     }
     else {
-        viewerCount += Math.abs(Math.round(change*10)/10);
+        viewerCount += Math.abs(change);
     }
     
+    var viewerCountString = Math.floor(viewerCount/1000) + " " + viewerCount.toString().slice(1);
 
-    document.getElementsByClassName("viewercount")[0].textContent = Math.round(viewerCount*10)/10 + "K";
+    document.getElementsByClassName("viewercount")[0].textContent = viewerCountString;
 }
 
 postComment();
